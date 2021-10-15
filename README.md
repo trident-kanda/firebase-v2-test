@@ -1,5 +1,6 @@
-Next-Preset
+FireBaseTest
 
+- Firebase
+- TailwindCSS
 - Next
-- Tailwind
-- TypeScript
+- React
