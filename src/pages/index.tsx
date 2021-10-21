@@ -10,8 +10,8 @@ export default function Home() {
           </Link>
         </li>
         <li>
-          <Link href="/firestore">
-            <a className="text-xl">FireStore</a>
+          <Link href="/fireauth">
+            <a className="text-xl">FireAuth</a>
           </Link>
         </li>
         <li></li>
