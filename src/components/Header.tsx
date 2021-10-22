@@ -6,11 +6,7 @@ const Header = () => {
         src={"/firebaselogo.svg"}
         width="188"
         height="52"
-        className=" flex-auto"
       />
-      <div>
-        <a className="text-white">aaaa</a>
-      </div>
     </header>
   );
 };
