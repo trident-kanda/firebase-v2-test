@@ -5,7 +5,13 @@ import Task from "../components/Task";
 import Title from "../components/Title";
 import { GetServerSideProps } from "next";
 import { addData, getData } from "../../firebase/firestore";
-const Firestore = () => {
+interface props{
+  data: {
+    title:string
+    state:boolean
+  }[]
+}
+const Firestore = ({data}:props) => {
   return (
     <>
       <Layout>
@@ -13,9 +19,11 @@ const Firestore = () => {
         <Main>
           <div className="bg-white sm:rounded-lg shadow p-4">
             <Title title={"LIST"} />
-            <Task title={"aaaa"} state={false} />
-            <Task title={"aaaa"} state={false} />
-            <Task title={"aaaa"} state={false} />
+            {data.map((data)=>{
+              return(
+                <Task title={data.title} state={data.state} />
+              )
+            })}
             <Title title={"ADD"} />
           </div>
         </Main>
@@ -27,10 +35,10 @@ const Firestore = () => {
 export default Firestore;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  
+   const data = await getData("todo")
     return{
       props:{
-
+        data
       }
     }
 }

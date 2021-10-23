@@ -7,10 +7,8 @@ interface addDataProps {
   data: object;
 }
 
-interface getDataProps {
-  dbName: string;
-}
-const addData = async ({ dbName, data }: addDataProps) => {
+
+export const addData = async ({ dbName, data }: addDataProps) => {
   try {
     const docRef = await addDoc(collection(db, dbName), data);
   } catch (e) {
@@ -18,9 +16,11 @@ const addData = async ({ dbName, data }: addDataProps) => {
   }
 };
 
-const getData = async ({ dbName }: getDataProps) => {
+export const getData = async ( dbName:string) => {
   const querySnapshot = await getDocs(collection(db, dbName));
+  const array:any[] = []
   querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data()}`);
+    array.push(doc.data())
   });
+  return array
 };
