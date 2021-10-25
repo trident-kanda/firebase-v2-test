@@ -20,7 +20,11 @@ export const getData = async ( dbName:string) => {
   const querySnapshot = await getDocs(collection(db, dbName));
   const array:any[] = []
   querySnapshot.forEach((doc) => {
-    array.push(doc.data())
+    array.push({
+      id:doc.id,
+      title: doc.data().title,
+      state: doc.data().state
+    })
   });
   return array
 };
