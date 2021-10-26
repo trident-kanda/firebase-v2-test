@@ -5,13 +5,16 @@ import Task from "../components/Task";
 import Title from "../components/Title";
 import { GetServerSideProps } from "next";
 import { addData, getData } from "../../firebase/firestore";
+import { useState } from "react";
 interface props{
   data: {
     title:string
     state:boolean
   }[]
 }
+
 const Firestore = ({data}:props) => {
+  const [list,addList] = useState(data)
   return (
     <>
       <Layout>
