@@ -14,7 +14,6 @@ interface props{
 }
 
 const Firestore = ({data}:props) => {
-  const [list,addList] = useState(data)
   return (
     <>
       <Layout>
