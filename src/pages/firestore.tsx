@@ -6,14 +6,15 @@ import Title from "../components/Title";
 import { GetServerSideProps } from "next";
 import { addData, getData } from "../../firebase/firestore";
 import { useState } from "react";
-interface props{
+interface props {
   data: {
-    title:string
-    state:boolean
-  }[]
+    id: string;
+    title: string;
+    state: boolean;
+  }[];
 }
 
-const Firestore = ({data}:props) => {
+const Firestore = ({ data }: props) => {
   return (
     <>
       <Layout>
@@ -21,10 +22,10 @@ const Firestore = ({data}:props) => {
         <Main>
           <div className="bg-white sm:rounded-lg shadow p-4">
             <Title title={"LIST"} />
-            {data.map((data)=>{
-              return(
-                <Task title={data.title} state={data.state} />
-              )
+            {data.map((data) => {
+              return (
+                <Task title={data.title} state={data.state} key={data.id} />
+              );
             })}
             <Title title={"ADD"} />
           </div>
@@ -37,10 +38,10 @@ const Firestore = ({data}:props) => {
 export default Firestore;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-   const data = await getData("todo")
-    return{
-      props:{
-        data
-      }
-    }
-}
+  const data = await getData("todo");
+  return {
+    props: {
+      data,
+    },
+  };
+};
