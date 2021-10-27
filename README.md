@@ -4,3 +4,5 @@ FireBaseTest
 - TailwindCSS
 - Next
 - React
+
+FirebaseAuthやFirebaseStoreのテストです
