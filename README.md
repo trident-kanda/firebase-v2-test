@@ -5,4 +5,4 @@ FireBaseTest
 - Next
 - React
 
-FirebaseAuthやFirebaseStoreのテストです
+FirebaseAuth や FirebaseStore や Storage のテストです
