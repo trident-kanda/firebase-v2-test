@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Task from "../components/Task";
 import Title from "../components/Title";
 import { GetServerSideProps } from "next";
-import { addData, getData } from "../../firebase/firestore";
+import {  getData } from "../../firebase/firestore";
 import { useState } from "react";
 import Add from "../components/Add";
 interface props {
