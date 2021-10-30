@@ -6,6 +6,7 @@ import Title from "../components/Title";
 import { GetServerSideProps } from "next";
 import { addData, getData } from "../../firebase/firestore";
 import { useState } from "react";
+import Add from "../components/Add";
 interface props {
   data: {
     id: string;
@@ -15,6 +16,7 @@ interface props {
 }
 
 const Firestore = ({ data }: props) => {
+  const [list,changeList] = useState(data)
   return (
     <>
       <Layout>
@@ -22,12 +24,13 @@ const Firestore = ({ data }: props) => {
         <Main>
           <div className="bg-white sm:rounded-lg shadow p-4">
             <Title title={"LIST"} />
-            {data.map((data) => {
+            {list.map((data) => {
               return (
                 <Task title={data.title} state={data.state} key={data.id} />
               );
             })}
             <Title title={"ADD"} />
+            <Add />
           </div>
         </Main>
       </Layout>
