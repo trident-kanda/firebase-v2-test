@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs } from "@firebase/firestore";
+import { collection, doc,setDoc, getDocs } from "@firebase/firestore";
 import { db } from "./util";
 
 //データを追加
@@ -9,11 +9,13 @@ interface addDataProps {
 
 
 export const addData = async ({ dbName, data }: addDataProps) => {
-  try {
-    const docRef = await addDoc(collection(db, dbName), data);
-  } catch (e) {
+  const docRef = doc(collection(db, dbName));
+  try{
+    await setDoc(docRef,data)
+  }catch (e){
     console.error("err");
   }
+  
 };
 
 export const getData = async ( dbName:string) => {
